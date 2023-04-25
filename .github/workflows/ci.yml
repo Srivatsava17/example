@@ -20,7 +20,7 @@ jobs:
   deploy:
     strategy:
       matrix:
-        os: [ubuntu-latest,windows-latest,macOS-latest]
+        os: [ubuntu-latest, windows-latest, macOS-latest]
         environment: [dev, staging, production]
     runs-on: ${{ matrix.os }}
 
@@ -50,5 +50,13 @@ jobs:
         OS: ${{ matrix.os }}
         ENVIRONMENT: ${{ matrix.environment }}
       run: |
-      
-        
+        if [ "${{ matrix.os }}" = "ubuntu-latest" ]; then
+          # deploy code on Ubuntu
+          ./deploy.sh --env "${{ matrix.environment }}" --domain "${{ env.DOMAIN }}" --username "${{ env.USERNAME }}" --repository-url "${{ env.REPOSITORY_URL }}" --access-token "${{ env.ACCESS_TOKEN }}"
+        elif [ "${{ matrix.os }}" = "windows-latest" ]; then
+          # deploy code on Windows
+          deploy.bat --env "${{ matrix.environment }}" --domain "${{ env.DOMAIN }}" --username "${{ env.USERNAME }}" --repository-url "${{ env.REPOSITORY_URL }}" --access-token "${{ env.ACCESS_TOKEN }}"
+        elif [ "${{ matrix.os }}" = "macOS-latest" ]; then
+          # deploy code on macOS
+          ./deploy-mac.sh --env "${{ matrix.environment }}" --domain "${{ env.DOMAIN }}" --username "${{ env.USERNAME }}" --repository-url "${{ env.REPOSITORY_URL }}" --access-token "${{ env.ACCESS_TOKEN }}"
+        fi
