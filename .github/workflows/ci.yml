@@ -12,6 +12,8 @@ env:
   USERNAME: sriva
   REPOSITORY_URL: https://github.com/sriva/my-repo.git
   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+  EC2_PUBLIC_IP: YOUR_EC2_PUBLIC_IP
+  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
 jobs:
   deploy:
@@ -25,6 +27,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Connect to EC2 instance
+      uses: sriva/ssh-action@master
+      with:
+        host: ${{ env.EC2_PUBLIC_IP }}
+        username: ubuntu
+        key: ${{ env.SSH_PRIVATE_KEY }}
+        port: 5000
+
     - name: Deploy
       env:
         DOMAIN: ${{ env.DOMAIN }}
@@ -34,6 +44,4 @@ jobs:
         OS: ${{ matrix.os }}
         ENVIRONMENT: ${{ matrix.environment }}
       run: |
-
-
 
