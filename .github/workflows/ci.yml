@@ -6,7 +6,6 @@ branches:
 pull_request:
 branches:
 - main
-
 env:
 DOMAIN: example.com
 USERNAME: sriva
@@ -24,25 +23,26 @@ environment: [dev, staging, production]
 runs-on: ${{ matrix.os }}
 steps:
 - name: Checkout code
-  uses: actions/checkout@v2
-
+uses: actions/checkout@v2
 - name: Connect to EC2 instance
-  uses: appleboy/ssh-action@master
-  with:
-    host: ${{ env.EC2_INSTANCE_IP }}
-    username: Automated_Data_Lake # or whatever user you are using on the EC2 instance
-    key: ${{ env.SSH_PRIVATE_KEY }}
-
+uses: appleboy/ssh-action@master
+with:
+host: ${{ env.EC2_INSTANCE_IP }}
+username: Automated_Data_Lake # or whatever user you are using on the EC2 instance
+key: ${{ env.SSH_PRIVATE_KEY }}
 - name: Deploy
-  env:
-    DOMAIN: ${{ env.DOMAIN }}
-    USERNAME: ${{ env.USERNAME }}
-    REPOSITORY_URL: ${{ env.REPOSITORY_URL }}
-    ACCESS_TOKEN: ${{ env.ACCESS_TOKEN }}
-    OS: ${{ matrix.os }}
-    ENVIRONMENT: ${{ matrix.environment }}
-  run: |
-    echo "Deploying to ${ENVIRONMENT} environment" # Placeholder command, replace with your actual deploy command.
+env:
+DOMAIN: ${{ env.DOMAIN }}
+USERNAME: ${{ env.USERNAME }}
+REPOSITORY_URL: ${{ env.REPOSITORY_URL }}
+ACCESS_TOKEN: ${{ env.ACCESS_TOKEN }}
+OS: ${{ matrix.os }}
+ENVIRONMENT: ${{ matrix.environment }}
+run: |
+echo "Deploying to ${ENVIRONMENT} environment" # Placeholder command, replace with your actual deploy command.
 
-      
-        
+
+
+
+
+
