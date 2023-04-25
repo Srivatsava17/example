@@ -1,3 +1,4 @@
+name:ex
 on:
   push:
     branches:
@@ -12,7 +13,31 @@ env:
   REPOSITORY_URL: https://github.com/sriva/my-repo.git
   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
   EC2_INSTANCE_IP: 34.222.124.185
-  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+  SSH_PRIVATE_KEY: MIIEowIBAAKCAQEApnhZyA+QFzYjpfDag1ZIYp0QPX3MXcR/I14QhGxSllXfOXMF
+                   81OvLLZOOApW/OkzueNwJYvrqeYs8QGUSOWULtdUqVX/iMjExm6sasCDB7os16fm
+                   b80QoaUQ0llkpGlq8GUW1ouoXiG5qgDVjtM4VTI5YLjHhr2vqh0uUD1qlQ+cLuUe
+                   RjwIKrKwLv3/iZOufJC4nNJrs9GEEV2Pbsln0HJTKUg2PyPU7S/mCcLPrjcPwebH
+                   xEpI+6SnqIovRPdDWipZBD5C27dMMp3c2WaMLOT5p0S6o7aUlvqQTXUbYIYhav6s
+                   P9X1fYcwlbsWdOWicwG/AMZgCTajFztxHBWeGQIDAQABAoIBAEhj3477DYq6dUgM
+                   88jXNYUEjfJfiQZhk3P6zK35OPS9BORDm5vTkUKdSGhgPrGea2rzd2osbV+lg3eO
+                   W0BT7VttMhitGAEQZVlw+TM24gPzNtrU3YVSpF/WmvkN/JDucp11KDhF5QKCIe3G
+                   jRedzEpoG8FuuP1j8UbFh8VG39lPis23vwRg+yfk6NQw4W2efbVmYtQ7KCs9zyOg
+                   1P1cl8g6fZDwCfavLo7EVQxQPHVTR/kU061HElOwpofORl/lrqAGvU1P8PYSnWGO
+                   butDu6qg1c84YAHmoG/mKH95/r3n4pAVTNE4YlmrQI6Gjr8cLve+Ud/1l+MYkXzd
+                   laXGaN0CgYEA5t3XJDgu79JM/DtxYF+tSnvzEpXrECcZ5p/gu33BO9TXLjLJ7IzT
+                   ej0r1PTykWizfzor9vhjhFgPyGzJfWlV3bGIv0St9E7i6kAgTjHjlNPMpW5b4Ox6
+                   1vCMrZBEOJwNFD9CKZlJBt1U4Igxtt4Ul3fWpWKbawzHUNNUNnbGgv8CgYEAuJfO
+                   lCmFPmyk082pnx1AwR5pK0x+TzsQZbXUK7p5bOBARH0RWICsfQUqIN4By1T5wdek
+                   bHnYmMvVYmC1pz9rZ+zMWL1Q2Z8KoB/a6THEv2ZrxBorOyiLmoXTTn2bQgDyvu5i
+                   oS/1SfGzZu8aGfLdGNnnDxsBkyFr+8Z1S8XMlucCgYEArZWHOdh0kiVRdSVMreXC
+                   agqgTQ0j3NVJiDoVw2NecxopYLcXVCDesT5lQo2aBPLwY2zduagxS0TbORtytDUL
+                   NtFRvF5rXRIjU3Y71A92ymQlrw03T/r+sbXUUHv0j4vl2Z9mo9h5LAwm0VwV5SU9
+                   3lVgsqFdsjO9eWwsGXdc8wkCgYB3KmlN9M/z0KdHpIlQEs5u3Xb/YM5Zz8NyJcPm
+                   xucEhnB2xlagT9EKlH7x4OA/p4fkv5WCAdb2LQCAFfavFZ385T22O+Ep3CY74NSt
+                   nldpSHFhk5M9CZu2EZasISJNpdcPs00wyYkMR2CNnuW2wrZBCMrFUaXemcDgNOoc
+                   FIFTGQKBgCt7lUndJdouEIuK9/LSsgatpRtJmhFKaYaZihjHfbBwm7FYQE6iPRKo
+                   tnEGHdiSk3MpFUTd/y9w9cKa9KZ/Fz2XXda7PudAUxcXnrtIvcfPG7QcfDnblPPT
+                   w9DeuXQCMJQVstGviS1g1ueG18nvT/le1YcpuQYbyc6iqGpr4gTQ
 
 jobs:
   deploy:
