@@ -43,6 +43,4 @@ jobs:
         OS: ${{ matrix.os }}
         ENVIRONMENT: ${{ matrix.environment }}
       run: |
-        # Run deployment commands on the EC2 instance using the SSH connection
-        ssh ubuntu@${{ env.EC2_INSTANCE_IP }} "cd /path/to/app && git pull && npm install && npm run build && pm2 restart app"
-
+        
