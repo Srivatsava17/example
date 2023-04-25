@@ -1,4 +1,5 @@
 name: example
+
 on:
   push:
     branches:
@@ -28,14 +29,19 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Connect to EC2 instance
-      uses: sriva/ssh-action@master
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ env.EC2_PUBLIC_IP }}
         username: ubuntu
         key: ${{ env.SSH_PRIVATE_KEY }}
-        port: 5000
+        port: 200
 
-    - name: Deploy
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential
+
+    - name: Deploy code
       env:
         DOMAIN: ${{ env.DOMAIN }}
         USERNAME: ${{ env.USERNAME }}
@@ -44,4 +50,4 @@ jobs:
         OS: ${{ matrix.os }}
         ENVIRONMENT: ${{ matrix.environment }}
       run: |
-
+        
