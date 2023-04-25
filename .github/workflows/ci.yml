@@ -20,7 +20,7 @@ jobs:
   deploy:
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [ubuntu-latest, windows-latest]
         environment: [dev, staging, production]
     runs-on: ${{ matrix.os }}
 
