@@ -31,7 +31,7 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ env.EC2_INSTANCE_IP }}
-        username: ubuntu # or whatever user you are using on the EC2 instance
+        username: Automated_Data_Lake # or whatever user you are using on the EC2 instance
         key: ${{ env.SSH_PRIVATE_KEY }}
 
     - name: Deploy
