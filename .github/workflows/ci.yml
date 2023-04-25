@@ -1,5 +1,4 @@
 name: example
-
 on:
   push:
     branches:
@@ -13,7 +12,7 @@ env:
   USERNAME: sriva
   REPOSITORY_URL: https://github.com/sriva/my-repo.git
   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-  EC2_PUBLIC_IP: ${{ secrets.EC2_PUBLIC_IP }}
+  EC2_INSTANCE_IP: 34.222.124.185
   SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
 jobs:
@@ -31,17 +30,11 @@ jobs:
     - name: Connect to EC2 instance
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ env.EC2_PUBLIC_IP }}
-        username: ubuntu
+        host: ${{ env.EC2_INSTANCE_IP }}
+        username: ubuntu # or whatever user you are using on the EC2 instance
         key: ${{ env.SSH_PRIVATE_KEY }}
-        port: 200
 
-    - name: Install dependencies
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y build-essential
-
-    - name: Deploy code
+    - name: Deploy
       env:
         DOMAIN: ${{ env.DOMAIN }}
         USERNAME: ${{ env.USERNAME }}
@@ -50,13 +43,6 @@ jobs:
         OS: ${{ matrix.os }}
         ENVIRONMENT: ${{ matrix.environment }}
       run: |
-        if [ "${{ matrix.os }}" = "ubuntu-latest" ]; then
-          # deploy code on Ubuntu
-          ./deploy.sh --env "${{ matrix.environment }}" --domain "${{ env.DOMAIN }}" --username "${{ env.USERNAME }}" --repository-url "${{ env.REPOSITORY_URL }}" --access-token "${{ env.ACCESS_TOKEN }}"
-        elif [ "${{ matrix.os }}" = "windows-latest" ]; then
-          # deploy code on Windows
-          deploy.bat --env "${{ matrix.environment }}" --domain "${{ env.DOMAIN }}" --username "${{ env.USERNAME }}" --repository-url "${{ env.REPOSITORY_URL }}" --access-token "${{ env.ACCESS_TOKEN }}"
-        elif [ "${{ matrix.os }}" = "macOS-latest" ]; then
-          # deploy code on macOS
-          ./deploy-mac.sh --env "${{ matrix.environment }}" --domain "${{ env.DOMAIN }}" --username "${{ env.USERNAME }}" --repository-url "${{ env.REPOSITORY_URL }}" --access-token "${{ env.ACCESS_TOKEN }}"
-        fi
+        # Run deployment commands on the EC2 instance using the SSH connection
+        ssh ubuntu@${{ env.EC2_INSTANCE_IP }} "cd /path/to/app && git pull && npm install && npm run build && pm2 restart app"
+
