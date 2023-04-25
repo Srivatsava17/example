@@ -1,0 +1,39 @@
+name: example
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+env:
+  DOMAIN: example.com
+  USERNAME: sriva
+  REPOSITORY_URL: https://github.com/sriva/my-repo.git
+  ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        environment: [dev, staging, production]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build and deploy
+      env:
+        DOMAIN: ${{ env.DOMAIN }}
+        USERNAME: ${{ env.USERNAME }}
+        REPOSITORY_URL: ${{ env.REPOSITORY_URL }}
+        ACCESS_TOKEN: ${{ env.ACCESS_TOKEN }}
+        OS: ${{ matrix.os }}
+        ENVIRONMENT: ${{ matrix.environment }}
+      run: |
+
+
+
