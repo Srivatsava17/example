@@ -13,7 +13,7 @@ env:
   REPOSITORY_URL: https://github.com/sriva/my-repo.git
   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
   EC2_INSTANCE_IP: 34.222.124.185
-  SSH_PRIVATE_KEY: MIIEowIBAAKCAQEApnhZyA+QFzYjpfDag1ZIYp0QPX3MXcR/I14QhGxSllXfOXMF
+  SSH_PRIVATE_KEY: "MIIEowIBAAKCAQEApnhZyA+QFzYjpfDag1ZIYp0QPX3MXcR/I14QhGxSllXfOXMF
                    81OvLLZOOApW/OkzueNwJYvrqeYs8QGUSOWULtdUqVX/iMjExm6sasCDB7os16fm
                    b80QoaUQ0llkpGlq8GUW1ouoXiG5qgDVjtM4VTI5YLjHhr2vqh0uUD1qlQ+cLuUe
                    RjwIKrKwLv3/iZOufJC4nNJrs9GEEV2Pbsln0HJTKUg2PyPU7S/mCcLPrjcPwebH
@@ -37,7 +37,7 @@ env:
                    nldpSHFhk5M9CZu2EZasISJNpdcPs00wyYkMR2CNnuW2wrZBCMrFUaXemcDgNOoc
                    FIFTGQKBgCt7lUndJdouEIuK9/LSsgatpRtJmhFKaYaZihjHfbBwm7FYQE6iPRKo
                    tnEGHdiSk3MpFUTd/y9w9cKa9KZ/Fz2XXda7PudAUxcXnrtIvcfPG7QcfDnblPPT
-                   w9DeuXQCMJQVstGviS1g1ueG18nvT/le1YcpuQYbyc6iqGpr4gTQ
+                   w9DeuXQCMJQVstGviS1g1ueG18nvT/le1YcpuQYbyc6iqGpr4gTQ"
 
 jobs:
   deploy:
