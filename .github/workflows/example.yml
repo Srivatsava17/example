@@ -11,9 +11,9 @@ env:
   DOMAIN: example.com
   REPOSITORY_URL: https://github.com/sriva/my-repo.git
   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-  PRIVATE_KEY: ${{secrets.SSH_PRIVATE_KEY}}
-  HOST_NAME: ${{secrets.HOSTNAME}}
-  USER_NAME: ${{secrets.USERNAME}}
+  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+  HOST_NAME: ${{ secrets.HOSTNAME }}
+  USER_NAME: ${{ secrets.USERNAME }}
 
 jobs:
   deploy:
@@ -34,10 +34,11 @@ jobs:
         ACCESS_TOKEN: ${{ env.ACCESS_TOKEN }}
         OS: ${{ matrix.os }}
         ENVIRONMENT: ${{ matrix.environment }}
-        USER_NAME: ${env.USER_NAME}}
-        HOST_NAME: ${{env.HOST_NAME}}
-        PRIVATE_KEY: ${{env.PRIVATE_KEY}}
+        USER_NAME: ${{ env.USER_NAME }}
+        HOST_NAME: ${{ env.HOST_NAME }}
+        SSH_PRIVATE_KEY: ${{ env.SSH_PRIVATE_KEY }}
         
       run: |
          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-         ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOSTNAME}
+         ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME}
+
